@@ -112,9 +112,9 @@ export default function Matchups () {
                             <td className="w-10">
                                 <input onChange={(e) => setOneEightWest(e.target.value)} name="1-8WEST" value="PHX" type="radio" />
                             </td>
-                            <td className="px-4 py-3">TBD</td>
+                            <td className="px-4 py-3">NOP</td>
                             <td className="w-10">
-                                <input onChange={(e) => setOneEightWest(e.target.value)} name="1-8WEST" value="TBD" type="radio" />
+                                <input onChange={(e) => setOneEightWest(e.target.value)} name="1-8WEST" value="NOP" type="radio" />
                             </td>
                             <td className="w-10">
                                 <input onChange={(e) => setOneEightWestGames(e.target.value)} type="number" min="4" max="7" id="hero-field" name="hero-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -184,9 +184,9 @@ export default function Matchups () {
                             <td className="w-10">
                                 <input onChange={(e) => setOneEightEast(e.target.value)} name="1-8EAST" value="MIA" type="radio" />
                             </td>
-                            <td className="px-4 py-3">TBD</td>
+                            <td className="px-4 py-3">ATL</td>
                             <td className="w-10">
-                                <input onChange={(e) => setOneEightEast(e.target.value)} name="1-8EAST" value="TBD" type="radio" />
+                                <input onChange={(e) => setOneEightEast(e.target.value)} name="1-8EAST" value="ATL" type="radio" />
                             </td>
                             <td className="w-10">
                                 <input onChange={(e) => setOneEightEastGames(e.target.value)} type="number" min="4" max="7" id="hero-field" name="hero-field" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
