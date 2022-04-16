@@ -7,29 +7,37 @@ import AuthCheck from '../../components/AuthCheck.jsx';
 
 export async function getServerSideProps({ query }) {
 
-    const { username } = query;
-    const userDoc = await getUserWithUsername(username);
+    try {
+        const { username } = query;
+        const userDoc = await getUserWithUsername(username);
 
-    if (!userDoc) {
+        if (!userDoc) {
+            return {
+                notFound: true,
+            };
+        }
+
+        let user = null;
+        let predictions = null;
+        let locked = false;
+
+
+        if (userDoc) {
+            user = userDoc.data();
+            const predictionsQuery = userDoc.ref
+                .collection('predictions');
+
+            predictions = (await predictionsQuery.get()).docs.map(dataToJSON);
+        }
+
         return {
-            notFound: true,
+            props: { user, predictions },
         };
+
+    } catch {
+        console.log(error.message);
     }
 
-    let user = null;
-    let predictions = null;
-
-    if (userDoc) {
-        user = userDoc.data();
-        const predictionsQuery = userDoc.ref
-            .collection('predictions');
-
-        predictions = (await predictionsQuery.get()).docs.map(dataToJSON);
-    }
-
-    return {
-        props: { user, predictions },
-    };
 }
 
 export default function PredictionsPage({ user, predictions }) {
@@ -49,7 +57,7 @@ export default function PredictionsPage({ user, predictions }) {
         };
 
         return (
-            <button onClick={deletePrediction} className="flex mx-auto mt-16 text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Delete</button>
+            <button disabled onClick={deletePrediction} className="flex mx-auto mt-16 text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg">Delete</button>
         );
     }
 
@@ -63,7 +71,7 @@ export default function PredictionsPage({ user, predictions }) {
                             <div className="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
                                 <h1 className="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">Predict the 2022 NBA Playoffs.</h1>
                                 <Link href={`/${user.username}/predict`}>
-                                    <button className="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">Start</button>
+                                    <button disabled className="flex-shrink-0 text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg mt-10 sm:mt-0">Start</button>
                                 </Link>
                             </div>
                         </div>
