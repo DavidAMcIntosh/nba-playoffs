@@ -1,0 +1,24 @@
+{
+    "name": "Playoff Overtime",
+    "short_name": "Playoff OT",
+    "icons": [
+      {
+        "src": "/basketball-ball-192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+  
+      {
+        "src": "/basketball-ball-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF",
+    "start_url": "/",
+    "scope": "/",
+    "description": "The best NBA Playoff Bracket App",
+    "display": "standalone",
+    "orientation": "portrait"
+  }
